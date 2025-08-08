@@ -30,6 +30,7 @@ Download useful models for different tasks:
 
 ```bash
 # General purpose models
+ollama pull gpt-oss           # OpenAI's open-weight model
 ollama pull llama3.2          # Fast, capable model
 ollama pull qwen2.5           # High-quality text generation
 
@@ -134,12 +135,14 @@ Once configured, Claude can use these tools like this:
 ## Model Recommendations
 
 ### For Text Generation
-- **llama3.2** - Great balance of speed and quality
+- **gpt-oss** - Excellent balance of speed and quality
+- **llama3.2** - Good balance of speed and quality
 - **qwen2.5** - Higher quality but slower
 - **llama3.2:1b** - Very fast for simple tasks
 
 ### For Coding
-- **deepseek-coder** - Excellent code generation
+- **gpt-oss** - Excellent code generation
+- **deepseek-coder** - Great code generation
 - **qwen2.5-coder** - Alternative coding model
 
 ### For Embeddings
