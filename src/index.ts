@@ -137,6 +137,11 @@ class MCPOllamaServer {
       timeout: 300000, // 5 minutes for large models
       models: [
         {
+          name: 'gpt-oss',
+          capabilities: ['coding', 'text-generation', 'chat', 'reasoning'],
+          description: 'General purpose text generation and reasoning',
+        },
+        {
           name: 'llama3.2',
           capabilities: ['text-generation', 'chat', 'reasoning'],
           description: 'General purpose text generation and reasoning',
@@ -186,8 +191,8 @@ class MCPOllamaServer {
             properties: {
               model: {
                 type: 'string',
-                description: 'Ollama model name (e.g., llama3.2, qwen2.5)',
-                default: 'llama3.2',
+                description: 'Ollama model name (e.g., gpt-oss, llama3.2, qwen2.5)',
+                default: 'gpt-oss',
               },
               prompt: {
                 type: 'string',
@@ -216,7 +221,7 @@ class MCPOllamaServer {
               model: {
                 type: 'string',
                 description: 'Ollama model name',
-                default: 'llama3.2',
+                default: 'gpt-oss',
               },
               messages: {
                 type: 'array',
@@ -264,14 +269,14 @@ class MCPOllamaServer {
         },
         {
           name: 'ollama_code_generation',
-          description: 'Generate code using specialised coding models like deepseek-coder',
+          description: 'Generate code using specialised coding models like gpt-oss or deepseek-coder',
           inputSchema: {
             type: 'object',
             properties: {
               model: {
                 type: 'string',
                 description: 'Coding model name',
-                default: 'deepseek-coder',
+                default: 'gpt-oss',
               },
               task: {
                 type: 'string',
@@ -298,7 +303,7 @@ class MCPOllamaServer {
             properties: {
               model: {
                 type: 'string',
-                default: 'llama3.2',
+                default: 'gpt-oss',
               },
               text: {
                 type: 'string',
@@ -330,7 +335,7 @@ class MCPOllamaServer {
             properties: {
               model: {
                 type: 'string',
-                description: 'Model name to pull (e.g., llama3.2, qwen2.5:14b)',
+                description: 'Model name to pull (e.g., gpt-oss, llama3.2, qwen2.5:14b)',
               },
             },
             required: ['model'],
@@ -385,7 +390,7 @@ class MCPOllamaServer {
   }
 
   private async handleTextGeneration(args: any) {
-    const { model = 'llama3.2', prompt, temperature = 0.7, max_tokens = 2048 } = args;
+    const { model = 'gpt-oss', prompt, temperature = 0.7, max_tokens = 2048 } = args;
 
     const enhancedPrompt = `${prompt}\n\nPlease provide a clear, concise response.`;
     const response = await this.ollama.generateText(model, enhancedPrompt, {
@@ -404,7 +409,7 @@ class MCPOllamaServer {
   }
 
   private async handleChatCompletion(args: any) {
-    const { model = 'llama3.2', messages, temperature = 0.7 } = args;
+    const { model = 'gpt-oss', messages, temperature = 0.7 } = args;
 
     const response = await this.ollama.chatCompletion(model, messages, {
       temperature,
@@ -436,9 +441,9 @@ class MCPOllamaServer {
   }
 
   private async handleCodeGeneration(args: any) {
-    const { model = 'deepseek-coder', task, language = 'python', temperature = 0.2 } = args;
+    const { model = 'gpt-oss', task, language = 'python', temperature = 0.2 } = args;
 
-    const prompt = `Generate ${language} code for the following task:\n\n${task}\n\nProvide clean, well-commented code that follows best practices:`;
+    const prompt = `Generate ${language} code for the following task:\n\n${task}\n\nProvide clean, modern code that follows best practices:`;
 
     const response = await this.ollama.generateText(model, prompt, {
       temperature,
@@ -456,7 +461,7 @@ class MCPOllamaServer {
   }
 
   private async handleSummarisation(args: any) {
-    const { model = 'llama3.2', text, length = 'medium' } = args;
+    const { model = 'gpt-oss', text, length = 'medium' } = args;
 
     const lengthInstructions = {
       brief: 'Provide a very brief summary in 1-2 sentences.',
