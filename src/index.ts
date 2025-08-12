@@ -185,7 +185,7 @@ class MCPOllamaServer {
       const tools: Tool[] = [
         {
           name: 'ollama_generate_text',
-          description: 'Generate text using local Ollama for SIMPLE, token-efficient tasks like basic content, error messages, placeholder text, boilerplate code, or routine documentation. Use instead of Claude for non-analytical text generation. AVOID for complex reasoning, analysis, or creative writing that requires nuanced understanding.','
+          description: 'Generate text using local Ollama for SIMPLE, token-efficient tasks like basic content, error messages, placeholder text, boilerplate code, or routine documentation. Use instead of Claude for non-analytical text generation. AVOID for complex reasoning, analysis, or creative writing that requires nuanced understanding.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -214,7 +214,7 @@ class MCPOllamaServer {
         },
         {
           name: 'ollama_chat',
-          description: 'Have a conversation with local Ollama for SIMPLE Q&A, factual questions, or basic explanations that don\'t require deep reasoning. Prefer for routine queries to save Claude tokens. AVOID for complex analysis, nuanced discussions, or tasks requiring sophisticated reasoning.','
+          description: 'Have a conversation with local Ollama for SIMPLE Q&A, factual questions, or basic explanations that don\'t require deep reasoning. Prefer for routine queries to save Claude tokens. AVOID for complex analysis, nuanced discussions, or tasks requiring sophisticated reasoning.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -250,7 +250,7 @@ class MCPOllamaServer {
         },
         {
           name: 'ollama_embed_text',
-          description: 'Generate text embeddings using local embedding models like nomic-embed-text. Ideal for batch embedding tasks, semantic search, similarity comparisons, and clustering. Use this for routine embedding generation to save Claude tokens.','
+          description: 'Generate text embeddings using local embedding models like nomic-embed-text. Ideal for batch embedding tasks, semantic search, similarity comparisons, and clustering. Use this for routine embedding generation to save Claude tokens.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -269,7 +269,7 @@ class MCPOllamaServer {
         },
         {
           name: 'ollama_code_generation',
-          description: 'Generate SIMPLE code like getters/setters, basic CRUD operations, validation rules, boilerplate code, or routine functions. Use for mechanical coding tasks that follow established patterns. AVOID for architectural decisions, complex business logic, or code requiring sophisticated design patterns.','
+          description: 'Generate SIMPLE code like getters/setters, basic CRUD operations, validation rules, boilerplate code, or routine functions. Use for mechanical coding tasks that follow established patterns. AVOID for architectural decisions, complex business logic, or code requiring sophisticated design patterns.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -297,7 +297,7 @@ class MCPOllamaServer {
         },
         {
           name: 'ollama_summarise',
-          description: 'Create BRIEF summaries for logs, documentation, or simple content. Use for factual condensation and routine document processing that doesn\'t require deep analysis or insight. Ideal for batch summarization tasks to save Claude tokens. AVOID for content requiring interpretation or analytical summarization.','
+          description: 'Create BRIEF summaries for logs, documentation, or simple content. Use for factual condensation and routine document processing that doesn\'t require deep analysis or insight. Ideal for batch summarization tasks to save Claude tokens. AVOID for content requiring interpretation or analytical summarization.',
           inputSchema: {
             type: 'object',
             properties: {
